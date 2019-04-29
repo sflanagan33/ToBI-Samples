@@ -89,10 +89,10 @@
 			fixed2 uvC = IN.uv_NoiseTex + fixed2(0, -_Offset);
 			fixed2 uvD = IN.uv_NoiseTex + fixed2(-_Offset, 0);
 			o.Normal = computeNormals(height(_NoiseTex, uvA),
-									  height(_NoiseTex, uvB),
-									  height(_NoiseTex, uvC),
-									  height(_NoiseTex, uvD),
-									  h, _Strength);
+						  height(_NoiseTex, uvB),
+						  height(_NoiseTex, uvC),
+						  height(_NoiseTex, uvD),
+						  h, _Strength);
 
 			// Calculate color
 

@@ -2,19 +2,19 @@
 {
 	Properties
 	{
-    _EdgeLength ("Tesselation Edge Length", Range(2,50)) = 50
+        _EdgeLength ("Tesselation Edge Length", Range(2,50)) = 50
 
-    _SimulationTex ("Simulation Texture", 2D) = "gray" {}
-    _SimulationStrength ("Simulation Displacement Strength", Float) = 0.3
-		
-    _ColorTex ("Water Palette", 2D) = "white" {}
-		_HighlightThresholdMax ("Water Palette Depth", Float) = 1
+        _SimulationTex ("Simulation Texture", 2D) = "gray" {}
+        _SimulationStrength ("Simulation Displacement Strength", Float) = 0.3
+            
+        _ColorTex ("Water Palette", 2D) = "white" {}
+        _HighlightThresholdMax ("Water Palette Depth", Float) = 1
 
-		_NormalOffset ("Normal Offset", Range(0, 1)) = 0.5
-		_NormalStrength ("Normal Strength", Range(0, 100)) = 1
-    _NormalFarTex ("Normal Far Tex", 2D) = "bump" {}
+        _NormalOffset ("Normal Offset", Range(0, 1)) = 0.5
+        _NormalStrength ("Normal Strength", Range(0, 100)) = 1
+        _NormalFarTex ("Normal Far Tex", 2D) = "bump" {}
 
-    _CausticsTex ("Caustics Texture", 2D) = "gray" {}
+        _CausticsTex ("Caustics Texture", 2D) = "gray" {}
 	}
 
 	SubShader
@@ -47,7 +47,7 @@
 		// =============================================================================
 
 		sampler2D _SimulationTex;
-    float _SimulationStrength;
+		float _SimulationStrength;
 
 		void vert(inout appdata_full v)
 		{
@@ -87,9 +87,9 @@
 
 		float _NormalOffset;
 		float _NormalStrength;
-    sampler2D _NormalFarTex;
+		sampler2D _NormalFarTex;
 
-    sampler2D _CausticsTex;
+		sampler2D _CausticsTex;
 		
 		struct Input
 		{
@@ -127,10 +127,10 @@
 				fixed2 uvC = normUV + fixed2(0, +_NormalOffset);
 				fixed2 uvD = normUV + fixed2(+_NormalOffset, 0);
 				closeRead = computeNormals(height(_SimulationTex, uvA),
-												  height(_SimulationTex, uvB),
-												  height(_SimulationTex, uvC),
-												  height(_SimulationTex, uvD),
-												  h, _NormalStrength * s);
+								   height(_SimulationTex, uvB),
+								   height(_SimulationTex, uvC),
+								   height(_SimulationTex, uvD),
+								   h, _NormalStrength * s);
 			}
 
 			// Long read (from texture)
@@ -150,8 +150,8 @@
 			
 			float4 screenUV = IN.screenPos + o.Normal.xyxy * 0.25;
 			float sceneZ = LinearEyeDepth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(screenUV)).r);
-      float partZ = IN.color.g;
-      float diff = saturate((abs(sceneZ - partZ)) / _HighlightThresholdMax);
+			float partZ = IN.color.g;
+			float diff = saturate((abs(sceneZ - partZ)) / _HighlightThresholdMax);
 
 			// Do caustics
 
@@ -173,7 +173,7 @@
 
 			// Water effect
 
-      fixed3 waterColor = tex2D(_ColorTex, fixed2(diff, 0)).rgb;
+			fixed3 waterColor = tex2D(_ColorTex, fixed2(diff, 0)).rgb;
 
 			float waterMin = min(min(waterColor.r, waterColor.g), waterColor.b);
 			float waterMax = max(max(waterColor.r, waterColor.g), waterColor.b);
