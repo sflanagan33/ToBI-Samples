@@ -2,19 +2,19 @@
 {
 	Properties
 	{
-        _EdgeLength ("Tesselation Edge Length", Range(2,50)) = 50
+		_EdgeLength ("Tesselation Edge Length", Range(2,50)) = 50
 
-        _SimulationTex ("Simulation Texture", 2D) = "gray" {}
-        _SimulationStrength ("Simulation Displacement Strength", Float) = 0.3
-            
-        _ColorTex ("Water Palette", 2D) = "white" {}
-        _HighlightThresholdMax ("Water Palette Depth", Float) = 1
+		_SimulationTex ("Simulation Texture", 2D) = "gray" {}
+		_SimulationStrength ("Simulation Displacement Strength", Float) = 0.3
+			
+		_ColorTex ("Water Palette", 2D) = "white" {}
+		_HighlightThresholdMax ("Water Palette Depth", Float) = 1
 
-        _NormalOffset ("Normal Offset", Range(0, 1)) = 0.5
-        _NormalStrength ("Normal Strength", Range(0, 100)) = 1
-        _NormalFarTex ("Normal Far Tex", 2D) = "bump" {}
+		_NormalOffset ("Normal Offset", Range(0, 1)) = 0.5
+		_NormalStrength ("Normal Strength", Range(0, 100)) = 1
+		_NormalFarTex ("Normal Far Tex", 2D) = "bump" {}
 
-        _CausticsTex ("Caustics Texture", 2D) = "gray" {}
+		_CausticsTex ("Caustics Texture", 2D) = "gray" {}
 	}
 
 	SubShader
